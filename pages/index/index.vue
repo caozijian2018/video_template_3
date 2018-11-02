@@ -1,9 +1,9 @@
 <template>
-    <div class="container display_flex flex_column"  :style="{height:height_}">
-        <video-head @showLogin="showLogin" class=""  :class="{height0:is_scroll_bottom}"></video-head>
-        <div  class="flex_1 overflow_scroll scroll_box" style="">
+    <div class="container  display_flex transitions_time flex_column" :class="{outer_box:show_left_option}" :style="{height:height_}">
+        <video-head @showLogin="showLogin" class="" @changeOption="watchBusOfOption" :class="{height0:is_scroll_bottom}"></video-head>
+        <div class="flex_1 overflow_scroll scroll_box" >
             <login-box v-if="show_login" @close="show_login=false"></login-box>
-            <nuxt-child :is-scroll-bottom="is_scroll_bottom"></nuxt-child>
+            <nuxt-child @changeOption="watchBusOfOption"  style="overflow-x:hidden" :show-left-option="show_left_option" :is-scroll-bottom="is_scroll_bottom"></nuxt-child>
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@
     import initLanguage from "../../util/init_language";
     import initOp from "../../util/init_op";
     import isScrollBottom from "../../util/is_scroll_bottom";
-
+    
     export default {
         components: {
             videoHead,
@@ -22,10 +22,11 @@
         },
         data() {
             return {
-                prev_scroll:0,
+                prev_scroll: 0,
                 height_: "",
                 show_login: false,
-                is_scroll_bottom:false
+                is_scroll_bottom: false,
+                show_left_option: false
             }
         },
         mounted() {
@@ -35,8 +36,12 @@
             this.watchOnresize();
         },
         methods: {
-            scroll(res){
-                var is_scroll_bottom = isScrollBottom(res,this);
+            watchBusOfOption(v) {
+                // alert(2);
+                this.show_left_option = v;
+            },
+            scroll(res) {
+                var is_scroll_bottom = isScrollBottom(res, this);
                 this.is_scroll_bottom = is_scroll_bottom;
             },
             saveLang() {
@@ -61,5 +66,16 @@
 </script>
 
 <style lang='less'>
-    
+    @media screen and (max-width:800px) {
+        .bigbox{
+            // transform: translateX(0px);
+        }
+        .transitions_time{
+            transition: .4s;
+        }
+        .outer_box {
+            
+            transform: translateX(300px);
+        }
+    }
 </style>

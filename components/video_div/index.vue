@@ -1,12 +1,11 @@
 <template>
     <div @click="goWatchMp4(item.id)" class="width_100 video_box margin_bottom_1">
         <div class="hover_img position_relative text_center margin_bottom-1 overflow_hidden" :style="{height:boxheight+'px'}">
-            <i class="pcs iconfont icon-weibiaoti1 white play pc_none"></i>
             <div class="width_100 height_100 img_box">
                 <img @load="loadImg($event)" :src="item.cover" class="pcs video_img_box" style="" alt="">
             </div>
         </div>
-        <div class="padding_1 font back_white">
+        <div class=" back_white">
             <div class="title_text display_flex">
                 {{item.title|first10}}
             </div>
@@ -89,7 +88,7 @@
             background:@app_orange;
         }
         .title_text {
-            font-size: 19px;
+            font-size: 14px;
             color:@app_font_color;
             height:40px;
             align-items: center;

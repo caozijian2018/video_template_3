@@ -2,33 +2,9 @@
   <div v-loading.fullscreen.lock="fullscreenLoading">
     <!-- <video-banner :current-banner="current_banner"></video-banner> -->
     <!-- <category-box @ordering="getOrdering"></category-box> -->
-    <div class="width_60 margin_auto display_flex">
-      <div class="width_25 left_cate_box">
-        <div class="left_box_logo_head width_65 margin_auto">
-          <lang-select :selectWhatLang="select_lang_val" @selectLang="selectLang"></lang-select>
-          <img src="../../../static/img/html5games_logo.png" class="width_100 margin_top_10" alt="">
-        </div>
-        <!-- cate -->
-        <div>
-          <div class="width_100">
-            <div class="cate_little_box display_flex" :class="{select_cate:0 === current_cate}" @click="selectCate({id:0})">
-              <div class="height_100 cate_left_border"></div>
-              <div class="flex_1 height_100">
-                <div class="width_80 height_100 margin_auto right_box">
-                  {{$t('words.home')}}
-                </div>
-              </div>
-            </div>
-            <div class="cate_little_box display_flex" v-for="item in tag_arr" :class="{select_cate:item.id == current_cate}" @click="selectCate(item)" :key="item.id">
-              <div class="height_100 cate_left_border"></div>
-              <div class="flex_1 height_100">
-                <div class="width_80 height_100 margin_auto right_box">
-                  {{item.name}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="width_60 margin_auto phone_width_100 display_flex">
+      <div class="width_25 left_phone_div_show_0">
+        <left-cate-div @getList="getPage" :tag-arr="tag_arr" @getTagList="getTagList"></left-cate-div>
       </div>
       <div class="flex_1">
         <div class="pc_flex  width_90 margin_auto">
@@ -46,12 +22,12 @@
 
 <script>
   import videoDiv from "../../../components/video_div";
+  import leftCateDiv from "../../../components/left_cate_div";
   import videoHead from "../../../components/videoHead";
   import categoryBox from "../../../components/category_box";
   import videoFooter from "../../../components/footer";
   import videoBanner from "../../../components/banner";
   import langSelect from "../../../components/lang_select";
-  
   import glo_axios from "../../../util/glo_request";
   import get_banner from "../../../util/get_banner";
   import getLang from "../../../util/get_lang";
@@ -88,16 +64,24 @@
         };
       });
     },
+    props: {
+      showLeftOption: {
+        type: Boolean,
+        default: false,
+      }
+    },
     components: {
       videoDiv,
       videoHead,
       videoFooter,
       videoBanner,
       categoryBox,
-      langSelect
+      langSelect,
+      leftCateDiv
     },
     data() {
       return {
+        show_left_option: false,
         tag_arr: [],
         current_cate: 0,
         list: [],
@@ -119,8 +103,17 @@
       this.saveInfo();
       this.fromMp4page();
       this.setCurrentLangSelect();
+      this.watchBusOfOption();
     },
     methods: {
+      closeOption() {
+        this.$emit('changeOption', false);
+      },
+      watchBusOfOption() {
+        bus.$on('changeOption', (v) => {
+          this.show_left_option = v;
+        })
+      },
       getTagList(tag_id) {
         this.fullscreenLoading = true;
         this.$http("album", "get", {
@@ -135,9 +128,9 @@
       },
       selectCate(item) {
         this.current_cate = item.id;
-        if(item.id === 0){
+        if (item.id === 0) {
           this.getPage(1)
-        }else{
+        } else {
           this.getTagList(item.id);
         }
       },
@@ -205,7 +198,7 @@
           ordering
         });
       },
-      getPage(page) {
+      getPage(page = 1) {
         this.getList({
           page,
           ordering: this.glo_ordering
@@ -283,6 +276,15 @@
         display: flex;
         align-items: center;
       }
+    }
+  }
+  
+  @media screen and (max-width:800px) {
+    .left_phone_div_show_0 {
+      width: 0;
+    }
+    .phone_width_100 {
+      width: 100%;
     }
   }
   
