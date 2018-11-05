@@ -58,14 +58,12 @@
                 })
             },
             selectCate(item) {
-                // this.$emit('changeOption',false);
-                bus.$emit('option_state',false);
+                bus.$emit('option_state', false);
                 this.current_cate = item.id;
                 if (item.id === 0) {
                     this.$emit('getList');
                 } else {
                     this.$emit("getTagList", item.id);
-                    // this.getTagList(item.id);
                 }
             },
             selectLang(val) {
@@ -84,11 +82,11 @@
 <style lang='less'>
     @import "../../assets/css/current_theme.less";
     .left_cate_box {
-        height:100%;
+        height: 100%;
+        background: @app_gray;
         .left_box_logo_head {
             padding: 10px 0 20px;
         }
-        background: @app_gray;
         .cate_little_box {
             &:hover {
                 .cate_left_border {
@@ -116,14 +114,11 @@
             }
         }
         @media screen and (max-width:800px) {
-            &{
-                display: flex;
-                flex-direction: column;
-
-                .phone_box_flex{
-                    flex:1;
-                    overflow: scroll;
-                }
+            display: flex;
+            flex-direction: column;
+            .phone_box_flex {
+                flex: 1;
+                overflow: scroll;
             }
             .head_orange_div {
                 height: 10px;
@@ -133,7 +128,6 @@
             width:300px;
             overflow: scroll;
             left:-300px;
-            z-index:1000;
             top:0;
         }
     }

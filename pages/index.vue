@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="    overflow-x: hidden;">
+  <div class="container" style="overflow-x:hidden;">
     <nuxt/>
   </div>
 </template>
@@ -32,7 +32,6 @@
   
   .container {
     width: 100%;
-    // overflow-x: hidden;
   }
 </style>
 

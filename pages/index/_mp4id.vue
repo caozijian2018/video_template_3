@@ -6,11 +6,11 @@
 </template>
 
 <script>
-    import mp4 from "../../../components/mp4"
-    import go4url from "../../../util/go4url"
-    import getCountry from "../../../util/get_country"
+    import mp4 from "../../components/mp4"
+    import go4url from "../../util/go4url"
+    import getCountry from "../../util/get_country"
 
-  import videoFooter from "../../../components/footer";
+  import videoFooter from "../../components/footer";
 
     export default {
         components: {
@@ -77,7 +77,7 @@
 </script>
 
 <style lang='less' scoped>
-    @import "../../../assets/css/current_theme.less";
+    @import "../../assets/css/current_theme.less";
     body {
         background: @light_gray
     }

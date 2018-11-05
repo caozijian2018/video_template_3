@@ -11,7 +11,6 @@
     export default {
         data() {
             return {
-                // value:'en',
                 options: [{
                         value: "zh-tw",
                         label: "中文繁体"
@@ -48,7 +47,5 @@
         .el-input__inner {
             background: @app_gray;
         }
-        width: 114px;
-
     }
 </style>

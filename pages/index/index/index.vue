@@ -1,7 +1,5 @@
 <template>
   <div v-loading.fullscreen.lock="fullscreenLoading">
-    <!-- <video-banner :current-banner="current_banner"></video-banner> -->
-    <!-- <category-box @ordering="getOrdering"></category-box> -->
     <div class="width_60 margin_auto phone_width_100 display_flex">
       <div class="width_25 left_phone_div_show_0">
         <left-cate-div @getList="getPage" :tag-arr="tag_arr" @getTagList="getTagList"></left-cate-div>

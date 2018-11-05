@@ -37,7 +37,6 @@
         },
         methods: {
             watchBusOfOption(v) {
-                // alert(2);
                 this.show_left_option = v;
             },
             scroll(res) {
