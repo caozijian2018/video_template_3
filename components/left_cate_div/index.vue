@@ -4,7 +4,7 @@
         <div class="phone_box_flex">
             <div class="left_box_logo_head width_65 margin_auto">
                 <lang-select :selectWhatLang="select_lang_val" @selectLang="selectLang"></lang-select>
-                <img src="../../static/img/html5games_logo.png" class="width_100 margin_top_10" alt="">
+                <img src="../../static/img/logo.png" class="width_100 margin_top_10" alt="">
             </div>
             <!-- cate -->
             <div>

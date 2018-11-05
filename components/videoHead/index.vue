@@ -9,7 +9,7 @@
                         <div class="last"></div>
                     </div>
                 </div>
-                <img src="../../static/img/html5games_logo.png" class="logo_img" alt="">
+                <img src="../../static/img/logo.png" class="logo_img" alt="">
                 <lang-select :selectWhatLang="select_lang_val" @selectLang="selectLang"></lang-select>
             </div>
         </div>
