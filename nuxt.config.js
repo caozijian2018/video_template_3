@@ -24,7 +24,7 @@ module.exports = {
     WTAT_THIS_APP:"humorboom"
   },
   head: {
-    title: 'HumorBoom',
+    title: 'charm-garden',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
